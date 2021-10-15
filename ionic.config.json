@@ -1,0 +1,7 @@
+{
+  "name": "hunterApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
