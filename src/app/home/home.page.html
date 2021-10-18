@@ -1,8 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title> Hunter Staging </ion-title>
+    <ion-buttons slot="primary">
+      <ion-toggle (ionChange)="toggleDarkTheme($event)"></ion-toggle>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +15,71 @@
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <form [formGroup]="huntersForm">
+      <ion-card>
+        <ion-item>
+          <ion-label>Woods</ion-label>
+          <ion-button
+            slot="end"
+            color="danger"
+            fill="clear"
+            size="large"
+            (click)="presentPopover($event)"
+            >{{currentLvlOfDanger}}%
+            <ion-icon slot="end" name="information-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-card-content>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
+          praesentium quod facere facilis beatae maxime tenetur, enim fugiat
+          rerum reiciendis sequi iusto neque! Minima, quaerat!
+        </ion-card-content>
+        <ion-card>
+          <ion-card-header>Hunters deployed</ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-label position="fixed">Citizens</ion-label>
+                <ion-range
+                  min="0"
+                  max="10"
+                  step="1"
+                  snaps="true"
+                  (ionChange)="citizenSlider($event)"
+                ></ion-range>
+                <ion-label>{{woodsHunters.get('citizens').value}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label position="fixed">Soldiers</ion-label>
+                <ion-range
+                  min="0"
+                  max="10"
+                  step="1"
+                  snaps="true"
+                  (ionChange)="soldiersSlider($event)"
+                ></ion-range>
+                <ion-label>{{woodsHunters.get('soldiers').value}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label position="fixed">Elite</ion-label>
+                <ion-range
+                  min="0"
+                  max="10"
+                  step="1"
+                  snaps="true"
+                  (ionChange)="eliteSlider($event)"
+                ></ion-range>
+                <ion-label>{{woodsHunters.get('elite').value}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-card>
+    </form>
   </div>
 </ion-content>
+<ion-footer>
+  <ion-button expand="block" fill="clear" (ionFocus)="sendHunters()"
+    >Begin Hunt</ion-button
+  >
+</ion-footer>

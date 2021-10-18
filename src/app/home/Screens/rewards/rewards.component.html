@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Rewards </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-list>
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label>Woods</ion-label>
+        </ion-item-divider>
+        <ion-item *ngFor="let reward of rewards">
+          <ion-label>{{ reward.animal[0].name }}</ion-label>
+          <ion-badge slot="end" color="warning">{{
+            reward.quantity
+          }}</ion-badge>
+        </ion-item>
+        <ion-item-divider>
+          <ion-label>River</ion-label>
+        </ion-item-divider>
+      </ion-item-group>
+    </ion-list>
+  </div>
+</ion-content>
